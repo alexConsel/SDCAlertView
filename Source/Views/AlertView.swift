@@ -54,6 +54,9 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
     }
 
     func prepareLayout() {
+        self.titleLabel.font = self.visualStyle.titleLabelFont
+        self.messageLabel.font = self.visualStyle.messageLabelFont
+        
         self.actionsCollectionView.actions = self.actions
         self.actionsCollectionView.visualStyle = self.visualStyle
 
@@ -66,9 +69,6 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
         self.createUI()
         self.createContentConstraints()
         self.updateUI()
-        
-        self.titleLabel.font = self.visualStyle.titleLabelFont
-        self.messageLabel.font = self.visualStyle.messageLabelFont
     }
 
     func addDragTapBehavior() {
