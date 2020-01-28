@@ -110,7 +110,7 @@ final class ActionSheetView: UIView, AlertControllerViewRepresentable {
 
         let cancelButtonBackground = UIImage.image(with: self.visualStyle.actionHighlightColor)
         self.cancelButton.setBackgroundImage(cancelButtonBackground, for: .highlighted)
-        self.cancelHeightConstraint.constant = self.visualStyle.actionViewSize.height
+        self.cancelHeightConstraint.constant = max(46+16, self.visualStyle.actionViewSize.height)
     }
 
     private func setUpContentView() {

@@ -51,8 +51,6 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
 
     convenience init() {
         self.init(frame: .zero)
-        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        self.messageLabel.font = UIFont.systemFont(ofSize: 13)
     }
 
     func prepareLayout() {
@@ -68,6 +66,9 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
         self.createUI()
         self.createContentConstraints()
         self.updateUI()
+        
+        self.titleLabel.font = self.visualStyle.titleLabelFont
+        self.messageLabel.font = self.visualStyle.messageLabelFont
     }
 
     func addDragTapBehavior() {
@@ -215,10 +216,10 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
 
         NSLayoutConstraint.activate([
             heightConstraint,
-            self.actionsCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor),
+            self.actionsCollectionView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -11*2),
             self.actionsCollectionView.topAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
             self.actionsCollectionView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.actionsCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.actionsCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -23+8),
         ])
     }
 

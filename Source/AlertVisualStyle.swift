@@ -36,14 +36,14 @@ open class AlertVisualStyle: NSObject {
     @objc
     public var actionHighlightColor = UIColor(white: 0.8, alpha: 0.7)
 
-    /// The color of the separators between actions
+    /// The font used in title
     @objc
-    public var actionViewSeparatorColor = UIColor(white: 0.5, alpha: 0.5)
-
-    /// The thickness of the separators between actions
+    public var titleLabelFont = UIFont.boldSystemFont(ofSize: 17)
+    
+    /// The font used in message
     @objc
-    public var actionViewSeparatorThickness: CGFloat = 1 / UIScreen.main.scale
-
+    public var messageLabelFont = UIFont.systemFont(ofSize: 13)
+    
     /// The font used in text fields
     @objc
     public var textFieldFont = UIFont.systemFont(ofSize: 13)

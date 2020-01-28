@@ -24,9 +24,9 @@ class ActionsCollectionView: UICollectionView {
         }
 
         if layout.scrollDirection == .horizontal {
-            return visualStyle.actionViewSize.height
+            return max(46+16, visualStyle.actionViewSize.height)
         } else {
-            return visualStyle.actionViewSize.height * CGFloat(self.numberOfItems(inSection: 0))
+            return max(46+16, visualStyle.actionViewSize.height) * CGFloat(self.numberOfItems(inSection: 0))
         }
     }
 
@@ -41,11 +41,6 @@ class ActionsCollectionView: UICollectionView {
         self.backgroundColor = .clear
         self.delaysContentTouches = false
         self.translatesAutoresizingMaskIntoConstraints = false
-
-        self.collectionViewLayout.register(ActionSeparatorView.self,
-            forDecorationViewOfKind: kHorizontalActionSeparator)
-        self.collectionViewLayout.register(ActionSeparatorView.self,
-            forDecorationViewOfKind: kVerticalActionSeparator)
 
         let nibName = String(describing: ActionCell.self)
         let nib = UINib(nibName: nibName, bundle: Bundle.resourceBundle)
@@ -115,7 +110,7 @@ extension ActionsCollectionView: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let actionWidth = self.visualStyle.actionViewSize.width
-        let actionHeight = self.visualStyle.actionViewSize.height
+        let actionHeight = max(46+16, self.visualStyle.actionViewSize.height)
 
         let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
         if layout.scrollDirection == .horizontal {

@@ -24,7 +24,20 @@ final class DemoViewController: UITableViewController {
         let title = self.titleTextField.content
         let message = self.messageTextField.content
         let style = AlertControllerStyle(rawValue: self.styleControl.selectedSegmentIndex)!
+        let alertStyle = AlertVisualStyle(alertStyle: .alert)
+        alertStyle.backgroundColor = .white
+        alertStyle.normalTextColor = .black
+        alertStyle.alertNormalFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+        alertStyle.alertPreferredFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+        alertStyle.verticalElementSpacing = 30
+        
+        
+        let cancelAction = AlertAction(title: "Cancel", style: .preferred)
+        let okAction = AlertAction(title: "OK", style: .normal)
+        let deleteAction = AlertAction(title: "Delete", style: .destructive)
+        
         let alert = AlertController(title: title, message: message, preferredStyle: style)
+        alert.visualStyle = alertStyle
 
         let textFields = Int(self.textFieldCountTextField.content ?? "0")!
         for _ in 0..<textFields {
@@ -34,11 +47,11 @@ final class DemoViewController: UITableViewController {
         let buttons = Int(self.buttonCountTextField.content ?? "0")!
         for i in 0..<buttons {
             if i == 0 {
-                alert.addAction(AlertAction(title: "Cancel", style: .preferred))
+                alert.addAction(cancelAction)
             } else if i == 1 {
-                alert.addAction(AlertAction(title: "OK", style: .normal))
+                alert.addAction(okAction)
             } else if i == 2 {
-                alert.addAction(AlertAction(title: "Delete", style: .destructive))
+                alert.addAction(deleteAction)
             } else {
                 alert.addAction(AlertAction(title: "Button \(i)", style: .normal))
             }

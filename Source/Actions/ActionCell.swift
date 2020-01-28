@@ -2,6 +2,7 @@ import UIKit
 
 final class ActionCell: UICollectionViewCell {
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet private(set) var titleLabel: UILabel!
     @IBOutlet private var highlightedBackgroundView: UIView!
 
@@ -28,6 +29,10 @@ final class ActionCell: UICollectionViewCell {
         self.highlightedBackgroundView.backgroundColor = visualStyle.actionHighlightColor
 
         self.setupAccessibility(using: action)
+        
+        self.containerView.layer.cornerRadius = 5
+        self.containerView.layer.borderColor = self.titleLabel.textColor.cgColor
+        self.containerView.layer.borderWidth = 1
     }
 
     override func tintColorDidChange() {
