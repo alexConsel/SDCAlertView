@@ -117,6 +117,8 @@ final class AlertView: UIView, AlertControllerViewRepresentable {
     private func updateUI() {
         self.layer.masksToBounds = true
         self.layer.cornerRadius = self.visualStyle.cornerRadius
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.black.cgColor
         self.textFieldsViewController?.visualStyle = self.visualStyle
     }
 

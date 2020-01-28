@@ -95,8 +95,12 @@ final class ActionSheetView: UIView, AlertControllerViewRepresentable {
     private func createCornerRadius() {
         self.primaryView.layer.cornerRadius = self.visualStyle.cornerRadius
         self.primaryView.layer.masksToBounds = true
+        self.primaryView.layer.borderWidth = 1
+        self.primaryView.layer.borderColor = UIColor.black.cgColor
         self.cancelActionView.layer.cornerRadius = self.visualStyle.cornerRadius
         self.cancelActionView.layer.masksToBounds = true
+        self.cancelActionView.layer.borderWidth = 1
+        self.cancelActionView.layer.borderColor = UIColor.black.cgColor
     }
 
     private func setUpCancelButton() {
